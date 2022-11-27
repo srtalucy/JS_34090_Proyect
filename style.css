@@ -8,56 +8,9 @@
 }
 body{
     min-height: 100%;
+    background: linear-gradient(to left, #a2c8ec,#ceb6d9,#e3abce,#f9b0c3, #fbcabb);
 }
-/*GRID*/
-.main{
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: "album1 album2 album3"
-    "album4 album5 album6"
-    "album7 album8 album9"
-    "album10 album11 album12";
-    grid-gap: 20px;
-   
-   
-}
-.album1{
-    grid-area: album1;
-}
-.album2{
-    grid-area: album2;
-}
-.album3{
-    grid-area: album3;
-}
-.album4{
-    grid-area: album4;
-}
-.album5{
-    grid-area: album5;
-}
-.album6{
-    grid-area: album6;
-}
-.album7{
-    grid-area: album7;
-}
-.album8{
-    grid-area: album8;
-}
-.album9{
-    grid-area: album9;
-}
-.album10{
-    grid-area: album10;
-}
-.album11{
-    grid-area: album11;
-}
-.album12{
-    grid-area: album12;
-}
+
 
 
 /*FLEX Y AJUSTES*/
@@ -66,42 +19,14 @@ body{
     width: 15vw;
     height: 30vh;
 }
-section{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 25px;
-   
+
+header img{
+    width: 80px;
+    height: 80px;
 }
-section h3{
-    text-align: center;
-}
-button{
-    padding: 10px;
-  
+main{
+    padding-top: 2em;
 }
 
-header{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-header img{
-    width: 100px;
-    height: 100px;
-}
-main h3{
-    display: flex;
-    flex-direction: column;
-}
-footer{
-    border-top: black 1px solid;
-    padding: 50px;
-    
-}
-footer ul{
-    display: flex;
-    align-items: center;
-    align-self: center;
-    justify-content: center;
-}
+
+
