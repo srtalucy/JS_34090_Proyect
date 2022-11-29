@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => { //Creo mi array con los productos
     const productos=[
         {
             id:1, nombre:"Young Forever", precio:41.30, imagen:"./images/youngforever.jpg",
@@ -40,13 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
     let carrito=[];
     const moneda="€";
-    const DOMitems= document.querySelector("#items");
+    const DOMitems= document.querySelector("#items");   //Llamo a mis elementos del html
     const DOMcarrito= document.querySelector("#carrito");
     const DOMtotal= document.querySelector("#total");
     const DOMvaciar=document.querySelector("#vaciar");
     const DOMpagar=document.querySelector("#pagar");
     const ls= window.localStorage;
-    function crearProductos(){
+    function crearProductos(){ //Creo todos mis elementos de mi html para cada producto
         productos.forEach((elemento)=>{
             const card=document.createElement("div");
             card.classList.add("card", "col-sm-4");
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cardBoton.setAttribute("marcador", elemento.id);
             cardBoton.addEventListener("click", añadirAlCarrito)
 
-            cardBody.appendChild(cardImagen);
+            cardBody.appendChild(cardImagen);   //Inserto mis elementos 
             cardBody.appendChild(cardTitulo); 
             cardBody.appendChild(cardPrecio); 
             cardBody.appendChild(cardBoton);
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
     }
 
-    function añadirAlCarrito(evento){
+    function añadirAlCarrito(evento){ //Function para añadir al carrito con un toastify como notificacion
         carrito.push(evento.target.getAttribute("marcador"))
         actualizarCarrito();
         guardarLocalStorage();
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             }).showToast();
     }
-    function actualizarCarrito(){
+    function actualizarCarrito(){ //Function para mantener actualizado mi carrito a medida que voy agregando o eliminando cosas
         DOMcarrito.textContent="";
         const noDuplicados= [...new Set (carrito)];
         noDuplicados.forEach((item)=>{
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const cantidadProductos= carrito.reduce((total, itemId)=>{
                 return itemId===item ? total+=1:total;
             },0);
-            const li= document.createElement("li");
+            const li= document.createElement("li"); //Creo mi lista de elementos agregados en el html
             li.classList.add("list-group-item", "text-right","mx-2");
             li.textContent=`${cantidadProductos} x ${items[0].nombre} - ${items[0].precio}${moneda}`;
             const botonBorrar= document.createElement("button");
@@ -114,9 +114,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         DOMtotal.textContent = calcularTotal();
     }
-    function borrarDelCarrito(evento){
+    function borrarDelCarrito(evento){ //Function para eliminar cosas de mi carrito
         const id= evento.target.dataset.item;
-        carrito=carrito.filter((carritoid)=>{
+        carrito=carrito.filter((carritoid)=>{ 
             return carritoid!==id;
         });
         actualizarCarrito();
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }).showToast();
     }
 
-    function calcularTotal(){
+    function calcularTotal(){ //Calculo el precio total
         return carrito.reduce((total, item)=>{
             const items= productos.filter((itemProductos)=>{
                 return itemProductos.id===parseInt(item);
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return total+items[0].precio;
         },0).toFixed(2);
     }
-    function vaciarCarrito() {
+    function vaciarCarrito() { //Function para vaciar completamente el carrito
        
         carrito = [];
        
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }).showToast();
 
     }
-    function guardarLocalStorage(){
+    function guardarLocalStorage(){ //Function para guardar en el local storage
         ls.setItem("carrito", JSON.stringify(carrito));
     }
     function cargarLocalStorage(){
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
    
-    DOMvaciar.addEventListener("click", vaciarCarrito);
+    DOMvaciar.addEventListener("click", vaciarCarrito); //Eventos de click para los botones de pagar y vaciar
     DOMpagar.addEventListener("click", ()=>{
         Swal.fire({
             title: 'Estás seguro?',
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
             confirmButtonText: 'Acepto',
             denyButtonText: `Quiero seguir viendo la tienda!`,
           }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
+        
             if (result.isConfirmed) {
               Swal.fire('Muchas gracias!', 'Su compra ha sido confirmada', 'success')
             } else if (result.isDenied) {
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           })
     });
-    cargarLocalStorage();
+    cargarLocalStorage(); //Ejecuto las funciones principales
     crearProductos();
     actualizarCarrito();
 });
