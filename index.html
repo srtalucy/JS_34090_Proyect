@@ -24,17 +24,33 @@
 
             </div>
           </header>
-          <aside class="col-sm-12">
-            <h2>Carrito</h2>
-          
-            <ul id="carrito" class="list-group"></ul>
-            <hr>
-           
-            <p class="text-right">Total: <span id="total"></span>&euro;</p>
-            <button id="vaciar" class="btn btn-secondary">Vaciar</button>
-            <button id="pagar" class="btn btn-warning">Ir a pagar</button>
-        </aside>
-            <main id="items" class="col-sm-12 row"></main>
+         
+            <main id="items" class="col-sm-9 row"></main>
+            <aside class="col-sm-3">
+              <h2>Carrito</h2>
+            
+              <ul id="carrito" class="list-group"></ul>
+              <hr>
+             
+              <p class="text-right">Total: <span id="total"></span>&euro;</p>
+              <div class="row">
+                
+                <section class="col-sm-12 ">
+                  <button id="vaciar" class="btn btn-secondary">Vaciar</button>
+                  <button id="pagar" class="btn btn-warning">Ir a pagar</button> 
+                </section>
+               
+              </div>
+              <aside class="col-sm-12 d-flex flex-column mt-4">
+                <h5>Filtrar por precio</h5>
+                  <p><input type="radio" name="valor" id="nofilter" class="input">Sin filtro</p>
+                  <p><input type="radio" name="valor" id="bajo" class="input">00€-30€</p>
+                  <p><input type="radio" name="valor" id="intermedio" class="input">30€-40€</p>
+                  <p><input type="radio" name="valor" id="alto" class="input">40€-70€</p>
+              </aside>
+               
+          </aside>
+
           
             
         </div>
