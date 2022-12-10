@@ -45,9 +45,15 @@ document.addEventListener('DOMContentLoaded', () => { //Creo mi array con los pr
     const DOMtotal= document.querySelector("#total");
     const DOMvaciar=document.querySelector("#vaciar");
     const DOMpagar=document.querySelector("#pagar");
+    const inputFiltrarBajo= document.querySelector("#bajo");
+    const inputFiltrarInt= document.querySelector("#intermedio");
+    const inputFiltrarAlto=document.querySelector("#alto");
+    const nofilter= document.querySelector("#nofilter");
+
     const ls= window.localStorage;
-    function crearProductos(){ //Creo todos mis elementos de mi html para cada producto
-        productos.forEach((elemento)=>{
+    function crearProductos(productosElegidos){ //Creo todos mis elementos de mi html para cada producto
+        DOMitems.innerHTML="";
+        productosElegidos.forEach((elemento)=>{
             const card=document.createElement("div");
             card.classList.add("card", "col-sm-4");
             const cardBody=document.createElement("div");
@@ -74,6 +80,9 @@ document.addEventListener('DOMContentLoaded', () => { //Creo mi array con los pr
         });
         
     }
+
+   
+   
 
     function añadirAlCarrito(evento){ //Function para añadir al carrito con un toastify como notificacion
         carrito.push(evento.target.getAttribute("marcador"))
@@ -170,24 +179,46 @@ document.addEventListener('DOMContentLoaded', () => { //Creo mi array con los pr
         }
     }
    
+    
     DOMvaciar.addEventListener("click", vaciarCarrito); //Eventos de click para los botones de pagar y vaciar
     DOMpagar.addEventListener("click", ()=>{
-        Swal.fire({
-            title: 'Estás seguro?',
-            text: "Procederemos al pago si ustedes acepta",
-            showDenyButton: true,
-            confirmButtonText: 'Acepto',
-            denyButtonText: `Quiero seguir viendo la tienda!`,
-          }).then((result) => {
-        
-            if (result.isConfirmed) {
-              Swal.fire('Muchas gracias!', 'Su compra ha sido confirmada', 'success')
-            } else if (result.isDenied) {
-              Swal.fire('Cool!', 'Esperamos por tu compra :)', 'info')
-            }
-          })
+        if (calcularTotal()!=0){
+            Swal.fire({
+                title: 'Estás seguro?',
+                text: "Procederemos al pago si ustedes acepta",
+                showDenyButton: true,
+                confirmButtonText: 'Acepto',
+                denyButtonText: `Quiero seguir viendo la tienda!`,
+              }).then((result) => {
+            
+                if (result.isConfirmed) {
+                  Swal.fire('Muchas gracias!', 'Su compra ha sido confirmada', 'success')
+                } else if (result.isDenied) {
+                  Swal.fire('Cool!', 'Esperamos por tu compra :)', 'info')
+                }
+              })
+        }
+        else{
+            Swal.fire('No hay productos en su carrito')
+        }
+       
     });
+    inputFiltrarBajo.addEventListener("click", ()=>{
+        const precioFiltrado= productos.filter(album=>album.precio<=30)
+        crearProductos(precioFiltrado);
+    });
+    inputFiltrarInt.addEventListener("click", ()=>{
+        const precioFiltrado= productos.filter(album=>album.precio>30 && album.precio<=40)
+        crearProductos(precioFiltrado);
+    });
+    inputFiltrarAlto.addEventListener("click", ()=>{
+        const precioFiltrado= productos.filter(album=>album.precio>40 && album.precio<=70)
+        crearProductos(precioFiltrado);
+    });
+    nofilter.addEventListener("click", ()=>{
+        crearProductos(productos);
+    })
     cargarLocalStorage(); //Ejecuto las funciones principales
-    crearProductos();
+    crearProductos(productos);
     actualizarCarrito();
 });
