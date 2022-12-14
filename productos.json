@@ -1,0 +1,39 @@
+
+   [
+        {
+            "id":1, "nombre":"Young Forever", "precio":41.30, "imagen":"./images/youngforever.jpg"
+        },
+        {
+            "id":2, "nombre":"Love Yourself: Answer", "precio":41.99, "imagen":"./images/loveyourself.jpg"
+        },
+        {
+            "id":3, "nombre":"Proof", "precio":69.17, "imagen": "./images/proof.jpg"
+        },
+        {
+            "id":4, "nombre":"2 Cool 4 Skool/O!RUL8,2?", "precio":24.99, "imagen":"./images/2cool.jpg"  
+        },
+        {
+            "id":5, "nombre":"BTS, the Best", "precio":17.37, "imagen":"./images/thebest.jpg" 
+        },
+        {
+            "id":6, "nombre":"Map of the Soul: Persona", "precio":32.99, "imagen":"./images/mapofthesoulpersona.jpg"
+        },
+        {
+            "id":7, "nombre":"Youth", "precio":30.99, "imagen":"./images/youth.jpg" 
+        },
+        {
+            "id":8, "nombre":"Wings", "precio":26.99, "imagen": "./images/wings.jpg"
+        },
+       {
+            "id":9, "nombre":"Be", "precio":41.30, "imagen": "./images/be.jpg"
+        },
+        {
+            "id":10, "nombre":"Dark & Wild", "precio":33.50, "imagen":"./images/darkandwild.jpg" 
+        },
+        {
+            "id":11, "nombre":"Love Yourself: Her", "precio":31.99, "imagen":"./images/loveyourselfher.jpg" 
+        },
+        {
+            "id":12, "nombre":"Map of the Soul: 7", "precio":40.99, "imagen":"./images/mapofthesoul7.jpg"  
+        }
+    ]
